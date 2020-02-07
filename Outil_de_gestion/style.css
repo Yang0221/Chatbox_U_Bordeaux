@@ -1,0 +1,44 @@
+.content {
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.component {
+    width: 75vw;
+}
+
+.add {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.component button {
+    margin-left: 0.4vw;
+    margin-right: 0.4vw;
+}
+
+.search {
+    width: 30vw;
+    margin-top: 32vh;
+    margin-bottom: 14vh;
+}
+
+.show-popup {
+    display: block;
+}
+
+.hide-popup {
+    display: none;
+}
+
+.popup {
+    position: absolute;
+    width: 40vw;
+    height: 50vh;
+    top: 25vh;
+    left: 30vw;
+}

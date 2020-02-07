@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Outil de gestion du chatbot</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="content">
+        <div class="add component">
+            <button type="button" class="btn btn-info">Ajouter</button>
+            <button type="button" class="btn btn-outline-info" onclick="popup()">Fichier</button>
+        </div>
+
+        <div class="search component">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">O-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="display component">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Activité principale</th>
+                        <th scope="col"> Modification / Suppresion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">M</button>
+                            <button type="button" class="btn btn-danger" onclick="delete_item(1)">S</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">M</button>
+                            <button type="button" class="btn btn-danger">S</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">M</button>
+                            <button type="button" class="btn btn-danger">S</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">M</button>
+                            <button type="button" class="btn btn-danger">S</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">M</button>
+                            <button type="button" class="btn btn-danger">S</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="popup hide-popup">
+        <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true" onclick="popup()">X</a>
+        <div class="input-group mb-3">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Sélectionner un fichier</label>
+            </div>
+        </div>
+        <button type="button" class="btn btn-info">Ajouter</button>
+    </div>
+</body>
+
+</html>
