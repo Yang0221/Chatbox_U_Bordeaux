@@ -9,7 +9,7 @@ function delete_item(id) {
 }
 
 function popup() {
-    var element = document.getElementsByClassName("popup");
+    var element = document.getElementsByClassName("popup")[0];
     if (element.classList.contains("hide-popup")) {
         element.classList.remove("hide-popup");
         element.classList.add("show-popup");

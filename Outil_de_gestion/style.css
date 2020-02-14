@@ -37,20 +37,12 @@
     margin-bottom: 14vh;
 }
 
-.show-popup {
-    display: block;
-}
-
-.hide-popup {
-    display: none;
-}
-
 .popup {
     position: absolute;
-    width: 40vw;
-    height: 50vh;
-    top: 25vh;
-    left: 30vw;
+    top: 37.5vh;
+    right: 35vw;
+    background-color: white;
+    border: solid 1px #17a2b8;
 }
 
 .display i {
@@ -63,4 +55,31 @@
 
 .file:hover i {
     color: white;
+}
+
+.show-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 25vh;
+}
+
+.show-popup a {
+    position: relative;
+    align-self: end;
+    bottom: 7.5vh;
+    right: 0.5vw;
+}
+
+.show-popup button {
+    position: relative;
+    align-self: end;
+    top: 6.5vh;
+    right: 0.5vw;
+}
+
+.hide-popup {
+    display: none;
 }
