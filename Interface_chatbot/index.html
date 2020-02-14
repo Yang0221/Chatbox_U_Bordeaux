@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -14,9 +15,9 @@
         <!-- header area -->
         <div class="card-header msg_head">
   						<div class="d-flex bd-highlight">
-  								<div class="img_cont">
+  								<!--div class="img_cont"-->
   									   <img src="image/logo.png" class="rounded-circle user_img">
-  								</div>
+  								<!--/div-->
   								<div class="chat_info">
   									   <span >Assistant de localisation</span>
   									   <p>Univesité de Bordeaux</p>
@@ -25,7 +26,7 @@
   									   <span><i class="fas fa-phone"></i></span>
   								</div>
   						</div>
-  						<span id="close_menu_btn"><i class="fa fa-times" aria-hidden="true"></i></span>
+  						<span id="close_menu_btn" onclick="openChat(); closeChat()"><i class="fa fa-times" aria-hidden="true"></i></span>
   			</div>
 
         <!-- Chat area -->
@@ -50,16 +51,29 @@
                   </div>
                   <div class="msg_cotainer">
                       <span class="msg"> Dans quel campus es-tu situé ? </span>
-                      <div class="choix_menu">
+                      <!--div class="choix_menu msg" >
 								           <ul>
-									             <li>Campus de Talence Peixotto</li>
-									             <li>Campus de Victoire</li>
-									             <li>Campus de Pessac</li>
-									             <li>Campus de Victoire</li>
+                                                 <li> <button >Campus de Talence Peixotto</button> </li>
+                                                 <li> <button >Campus de Talence Peixotto</button> </li>
+                                                 <li> <button >Campus de Talence Peixotto</button> </li>
+                                                 <li> <button >Campus de Talence Peixotto</button> </li>
 								           </ul>
-							        </div>
+					   </div-->
                   </div>
              </div>
+             <div class="d-flex justify-content-start mb-4">
+                <!--div class="msg_cotainer"-->
+                    <div class="choix_menu msg" >
+                                         <ul>
+                                               <li> <button >Campus de Talence Peixotto</button> </li>
+                                               <li> <button >Campus de Talence Peixotto</button> </li>
+                                               <li> <button >Campus de Talence Peixotto</button> </li>
+                                               <li> <button >Campus de Talence Peixotto</button> </li>
+                                         </ul>
+                     </div>
+                <!--/div-->
+             </div>
+
 
              <div class="d-flex justify-content-end mb-4">
                   <div class="msg_cotainer_send">
@@ -72,15 +86,19 @@
                   </div>
                   <div class="msg_cotainer">
                       <span class="msg">  Dans quel bâtiment souhaites-tu aller ?</span>
-                      <div class="choix_menu">
-								           <ul>
-									             <li>A28</li>
-									             <li>A22</li>
-									             <li>A21</li>
-									             <li>A29</li>
-								           </ul>
-							        </div>
                   </div>
+            </div>
+
+            <div class="d-flex justify-content-start mb-4">
+                <!--div class="msg_cotainer"-->
+                <div class="choix_menu msg">
+                    <ul>
+                          <li><button>A28</button></li>
+                          <li><button>A28</button></li>
+                          <li><button>A28</button></li>
+                    </ul>
+                </div>
+                <!--/div-->
             </div>
 
             <div class="d-flex justify-content-end mb-4">
@@ -94,9 +112,9 @@
                   </div>
                   <div class="msg_cotainer">
                       <span class="msg"> Clique ici pour te rendre au A22</span>
-                      <div class="pluscode">
+                      <div class="choix_menu msg">
                            <ul>
-                               <li>RC42+WC Talence</li>
+                               <li><button>RC42+WC Talence</button></li>
                            </ul>
                       </div>
                  </div>
@@ -104,17 +122,21 @@
         </div>
 
         <!-- Input area -->
-        <div class="card-footer">
+        <!--div class="card-footer"-->
             <div class="input-group ">
+                 <!--div class="input-group-append">
+                     <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span-->
+                 <!--/div-->
+                 <input type="text" class="form-control type_msg msg" placeholder="Entrer votre message..." >
                  <div class="input-group-append">
-                     <!--span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span-->
-                 </div>
-                 <textarea name="" class="form-control type_msg msg" placeholder="Entrer votre message..."></textarea>
-                 <div class="input-group-append">
-                    <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
-                 </div>
+                    <span class="input-group-text "><i class="fas fa-arrow-right"></i></span>
+                 <div>
             </div>
-        </div>
+        <!--/div-->
 </div>
+
 </body>
+<div id="ChatBot_closed">
+    Chatbot_Closed
+</div>
 </html>
