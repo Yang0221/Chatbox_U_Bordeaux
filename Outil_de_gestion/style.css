@@ -1,3 +1,7 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
 .content {
     height: 100vh;
     text-align: center;
@@ -21,9 +25,15 @@
     margin-right: 0.4vw;
 }
 
+.title {
+    display: flex;
+    align-items: center;
+    margin-top: 22vh;
+}
+
 .search {
     width: 30vw;
-    margin-top: 32vh;
+    margin-top: 8vh;
     margin-bottom: 14vh;
 }
 
@@ -41,4 +51,16 @@
     height: 50vh;
     top: 25vh;
     left: 30vw;
+}
+
+.display i {
+    color: white;
+}
+
+.file i {
+    color: #17a2b8;
+}
+
+.file:hover i {
+    color: white;
 }
