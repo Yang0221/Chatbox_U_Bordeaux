@@ -14,17 +14,17 @@
     * {
         font-family: 'Quicksand', sans-serif;
     }
-
-    body { 
+    
+    body {
         background-color: #efefef;
     }
-
+    
     .edit-body {
         display: flex;
     }
-
+    
     .edit-box {
-        background-color :white;
+        background-color: white;
         padding: 0.75rem;
         margin: 0.5rem;
     }
@@ -40,37 +40,42 @@
         margin: 1.5rem;
     }
     
-    .edit-component {   
+    .edit-component {
         height: 80vh;
         margin-left: 5vw;
     }
-
+    
     .edit-left-box {
         width: 50vw;
     }
-
+    
     .edit-right-box {
         width: 30vw;
     }
-
+    
     .edit-list {
         height: 32vh;
         overflow-y: auto;
         padding-top: 0.5rem;
     }
-
+    
     .edit-list-line {
-        margin-bottom : 1rem;
+        margin-bottom: 1rem;
         display: flex;
         justify-content: space-evenly;
     }
-
+    
     .edit-list-title {
         border-bottom: solid 1px gray;
     }
-
+    
     .edit-right-box .edit-box {
         margin-bottom: 2vh;
+    }
+    
+    .edit-room-add-title {
+        border-bottom: solid 1px lightgray;
+        padding-bottom: 0.25rem;
     }
 </style>
 
@@ -120,6 +125,7 @@
             </div>
 
             <div class="edit-box edit-room-add">
+                <h5 class="edit-room-add-title">Nouvelle salle</h5>
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -138,7 +144,7 @@
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-primary">Modifier</button>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
                 </form>
             </div>
         </div>
