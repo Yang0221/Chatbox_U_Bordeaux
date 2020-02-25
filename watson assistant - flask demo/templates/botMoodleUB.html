@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> ChatBot d'aide pour Moodle </title>
+    </head>
+    <body>
+        <h1> ChatBot d'aide pour Moodle</h1>
+
+        <h2> - Aide -</h2>
+        <p> Posez vos questions au chatbot, il tentera de vous aider au mieux.</p>
+            
+        <div id='histo'>
+            <h3> Historique : </h3>
+            <p> Bot : Bonjour ! En quoi puis-je vous aider ?</p>
+        </div>
+        
+        <div id='demande' >
+                <label><br>Votre message :<br></label>
+                <input type="text" id="testzonecapturetexte" onkeypress="verifEnter(event)"/>
+        </div>
+        <div id='radioYN' hidden>
+            <input type='radio' id="radioYes" name="YN" value="Valeur à envoyer" onclick="LoadYesResponse()" disabled/> Oui
+            <input type='radio' id="radioNo"  name="YN" value="Valeur à envoyer" onclick="LoadNoResponse()" disabled/> Non
+        </div>
+
+        <script>
+            function verifEnter(event){
+                var x = event.which || event.keyCode ;
+                if(x == 13){
+                    LoadTextResponse();
+                }
+            }
+            
+            function addText(id, text){
+                var new_para = document.createElement("p");
+                var new_text = document.createTextNode(text);
+                new_para.appendChild(new_text);
+                var element = document.getElementById(id);
+                element.appendChild(new_para);
+            }
+
+            
+            function LoadBotResponse(input_usr){
+                addText("histo", "Vous: " + input_usr);
+                console.log("User input : ")
+                console.log(input_usr);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200){
+                        BotResponse(this);
+                    }
+                };
+                xmlhttp.open('POST', 'http://localhost:5000/update', true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.send("msg="+input_usr);
+            }
+
+            function LoadTextResponse(){
+                var input_usr = document.getElementById("testzonecapturetexte").value;
+                document.getElementById("testzonecapturetexte").value = "";
+                LoadBotResponse(input_usr);
+            }
+
+            function LoadYesResponse(){
+                document.getElementById("radioYes").disabled = true;
+                document.getElementById("radioNo").disabled = true;
+                var input_usr = document.getElementById("radioYes").value;
+                LoadBotResponse(input_usr);
+                document.getElementById("radioYes").checked = false;
+            }
+
+            function LoadNoResponse(){
+                document.getElementById("radioYes").disabled = true;
+                document.getElementById("radioNo").disabled = true;
+                var input_usr = document.getElementById("radioNo").value;
+                LoadBotResponse(input_usr);
+                document.getElementById("radioNo").checked = false;
+            }
+
+            function BotResponse(xmlhttp){
+                var rep = JSON.parse(xmlhttp.responseText);
+                console.log("response : ");
+                console.log(rep);
+                var len = rep.length;
+                var cpt = 0;
+                for(var i = 0; i < len; i++){
+                    var msg = rep[cpt];
+                    console.log("msg : ");
+                    console.log(msg);
+                    cpt ++;
+                    if(cpt == len){
+                        if(msg["response_type"] == "text"){
+                            addText("histo", "Bot : " + msg["text"]);
+                            document.getElementById("radioYN").hidden = true;
+                            document.getElementById("demande").hidden = false;
+                        }else if(msg["response_type"] == 'option'){
+                            addText("histo", "Bot : " + msg["title"]);
+                            document.getElementById("radioYN").hidden = false;
+                            document.getElementById("demande").hidden = true;
+                            document.getElementById("radioYes").value = msg["options"][0]["value"]["input"]["text"];
+                            document.getElementById("radioNo").value = msg["options"][1]["value"]["input"]["text"];
+                            document.getElementById("radioYes").disabled = false;
+                            document.getElementById("radioNo").disabled = false;
+                        }else{
+                            addText("histo", "Bot : Pouvez-vous reformuler ?");
+                            document.getElementById("radioYN").hidden = true;
+                            document.getElementById("demande").hidden = false;
+                        }
+                    }else{
+                        addText("histo", "Bot : " + msg["text"]);
+                    }
+                }
+            }
+            
+        </script>
+    </body>
+</html>
