@@ -11,7 +11,7 @@
     width: 350px;
     height : 50px;
     background: #009de0;
-    display : none;
+    display : block;
 }
 /************************* HEADER *************************/
 #header{
@@ -81,13 +81,13 @@
 
 /************************* BODY *************************/
 .chat{
-    width: 350px;;
+    width: 350px;
     height : 450px;
     background: #F9F7F7;
     overflow-y: auto;
     background: white;
 }
-
+width: 350px;
 .contacts_body{
     padding:  0.75rem 0 !important;
     overflow-y: auto;
@@ -180,51 +180,11 @@
     color : white;
 }
 
-.pluscode ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.carte_img{
+    width: 400px;
+    height : 250px;
 }
-
-.pluscode ul li{
-    width: 100%;
-    margin-bottom: 0px;
-    margin: 1.5px;
-    font-size: 15px;
-}
-.pluscode ul li{
-    width: 100%;
-    margin-bottom: 0px;
-    margin: 1.5px;
-    font-size: 12px;
-}
-/*.pluscode ul li:hover{
-    cursor: pointer;
-    background-color: rgba(0,0,0,0.2);
-}*/
-
 /************************* Footer *************************/
-/*.card-footer{
-    border-radius: 0 0 15px 15px !important;
-    border-top: 0 !important;
-    background-color:#443a31;
-}*/
-
-/*.type_msg{
-    background-color: rgba(0,0,0,0.3) !important;
-    background-color: grey;
-    border:0 !important;
-    color:white !important;
-    height: 60px !important;
-    overflow-y: auto;
-}*/
-
-/*.type_msg:focus{
-    box-shadow:none !important;
-    /*outline:0px !important;*/
-    /*Enleve le contour d'input
-}*/
-
 .send_btn{
     font-size: 30px;
     cursor: pointer;
