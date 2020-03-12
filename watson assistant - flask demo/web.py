@@ -9,6 +9,8 @@ from main import connect, bot_message
 app = Flask(__name__)
 connect()
 
+'''Voir main.py pour les clefs d'accès'''
+
 @app.route("/", methods = ['GET'])
 def start():
     return render_template('botMoodleUB.html')
