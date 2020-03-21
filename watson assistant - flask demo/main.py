@@ -4,13 +4,13 @@ from ibm_watson import AssistantV2
 
 
 session_id = "00"
-authenticator = IAMAuthenticator('EvR0NbioVwRGtvL1qZlFJlcXuGPH9_YCzyeAES2AIb8k') #Mettre la première clef ici (quand j'aurais finis Watson)
+authenticator = IAMAuthenticator('EvR0NbioVwRGtvL1qZlFJlcXuGPH9_YCzyeAES2AIb8k') #Mettre la première clef ici (EvR0NbioVwRGtvL1qZlFJlcXuGPH9_YCzyeAES2AIb8k)
 assistant = AssistantV2(
     version='2019-09-12',
     authenticator=authenticator
 )
 
-clef2 = "27d22841-06bc-46ed-9343-9c840acf00f0" #mettre la 2nd clef ici
+clef2 = "27d22841-06bc-46ed-9343-9c840acf00f0" #mettre la 2nd clef ici (37560d5c-c606-499e-b779-599ff5bc30a2)
 
 '''Possiblement possible de se connecter à une BDD via : https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks'''
 
