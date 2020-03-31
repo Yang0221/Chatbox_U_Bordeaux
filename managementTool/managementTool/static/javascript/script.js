@@ -4,7 +4,7 @@
 function delete_item(id) {
     if (confirm("Êtes-vous sûr de vouloir supprimer ce bâtiment ? (l'action est irréversible !)")) {
         console.log("deleted");
-        //TODO
+        //TODO ajouter la suppression en bdd
     }
 }
 
