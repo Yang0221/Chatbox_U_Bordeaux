@@ -9,25 +9,26 @@
   <div class="edit-body">
       <div class="edit-component edit-left-box">
           <div class="edit-box edit-building-informations">
-              <form>
+              <form action="{{building.id}}/edit_building" method="POST">
+                {% csrf_token %}
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="name">Nom</label>
-                          <input type="text" class="form-control" id="name" value="{{building.name}}">
+                          <input type="text" class="form-control" name="name" value="{{building.name}}">
                       </div>
                       <div class="form-group col-md-6">
                           <label for="mainActivity">Activité principale</label>
-                          <input type="text" class="form-control" id="mainActivity" value="{{building.main_activity}}">
+                          <input type="text" class="form-control" name="mainActivity" value="{{building.main_activity}}">
                       </div>
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="address">Adresse</label>
-                          <input type="text" class="form-control" id="address" value="{{building.address}}">
+                          <input type="text" class="form-control" name="address" value="{{building.address}}">
                       </div>
                       <div class="form-group col-md-6">
                           <label for="coordinatesGPS">Coordonnées GPS</label>
-                          <input type="text" class="form-control" id="coordinatesGPS" value="{{building.coordinates}}">
+                          <input type="text" class="form-control" name="coordinatesGPS" value="{{building.coordinates}}">
                       </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Modifier</button>
@@ -35,11 +36,12 @@
           </div>
 
           <div class="edit-box edit-alias-add">
-              <form>
+              <form action="{{building.id}}/add_synonym" method="POST">
+                {% csrf_token %}
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="alias">Nouvel alias</label>
-                          <input type="text" class="form-control" id="alias">
+                          <input type="text" class="form-control" name="alias">
                       </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Ajouter</button>
@@ -48,21 +50,22 @@
 
           <div class="edit-box edit-room-add">
               <h5 class="edit-room-add-title">Nouvelle salle</h5>
-              <form>
+              <form action="{{building.id}}/add_room" method="POST">
+                {% csrf_token %}
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="roomName">Nom</label>
-                          <input type="text" class="form-control" id="roomName">
+                          <input type="text" class="form-control" name="roomName">
                       </div>
                       <div class="form-group col-md-6">
                           <label for="stage">Étage</label>
-                          <input type="number" class="form-control" id="stage">
+                          <input type="number" class="form-control" name="stage">
                       </div>
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="activity">Activité</label>
-                          <input type="text" class="form-control" id="activity">
+                          <input type="text" class="form-control" name="activity">
                       </div>
 
                   </div>
