@@ -10,7 +10,11 @@ assistant = AssistantV2(
     authenticator=authenticator
 )
 
+<<<<<<< HEAD
 clef2 = "37560d5c-c606-499e-b779-599ff5bc30a2" #mettre la 2nd clef ici (27d22841-06bc-46ed-9343-9c840acf00f0)
+=======
+clef2 = "37560d5c-c606-499e-b779-599ff5bc30a2" #mettre la 2nd clef ici (37560d5c-c606-499e-b779-599ff5bc30a2)
+>>>>>>> a838c91bf6ecc0acc5c65d5d6ab3b283f7121e6b
 
 '''Possiblement possible de se connecter à une BDD via : https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks'''
 
@@ -25,14 +29,14 @@ def disconnect():
 
 #########################
 # Message
-#########################  
+#########################
 
 def bot_message(input_msg):
     global session_id, assistant
     message = assistant.message(
         clef2,
         session_id,
-        input={'text' : input_msg},          ## de la forme "input = {'text' : 'msg'}" 
+        input={'text' : input_msg},          ## de la forme "input = {'text' : 'msg'}"
         context={
             'metadata': {
                 'deployment': 'myDeployment'
@@ -43,7 +47,3 @@ def bot_message(input_msg):
     #print()
     #print(json.dumps(message, indent=2))
     return message["output"]["generic"]
-
-
-
-
