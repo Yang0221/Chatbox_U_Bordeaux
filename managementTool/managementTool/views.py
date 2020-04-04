@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from tool.models import Building
-from tool.models import Room
-from tool.models import Synonym
+from localisation.models import Building
+from localisation.models import Room
+from localisation.models import SynonymBuilding
 from django.http import HttpResponseRedirect
 
 def index(request):
@@ -27,7 +27,7 @@ def edit_building(request,id):
 def add_synonym(request,id):
     if request.POST:
         building = Building.objects.filter(id = id)
-        new_synomym = Synonym(id_building = building[0] , value = request.POST.get('alias'))
+        new_synomym = SynonymBuildings(id_building = building[0] , value = request.POST.get('alias'))
         new_synomym.save()
     return HttpResponseRedirect("/edit/" + id)
 
