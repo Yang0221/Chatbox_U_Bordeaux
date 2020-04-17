@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<script type="text/javascript">
+
+  function optionMessage(object){
+    console.log(object);
+    $('.user-btn').attr('disabled','true');
+    $(".bot").append("<p class='userMessage'>"+  object.firstChild.data  +"</p>");
+    newMessage(object.value);
+  }
+
+  function newMessage(text){
+      $.ajax({
+        type : "POST",
+        url : "/new_message",
+        dataType: 'json',
+        data : { 'text' : text},
+        success : function(data){
+          if(data.text){
+              $(".bot").append("<p>"+ data.text +"</p>");
+          }
+          if(data.title){
+            $(".bot").append("<p>"+ data.title +"</p>");
+            for (let i = 0; i < 2; i++) {
+              $(".bot").append('<button type="button" onclick="optionMessage(this)" class="btn btn-lg btn-primary user-btn" value="' + data.options[i].value.input.text + '">'+ data.options[i].label +'</button>');
+            }
+          }
+        }
+      })
+  }
+    
+  //fonctions pour gérer les cookies
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function csrfSafeMethod(method) {
+      //these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+
+  /*Input*/
+  $( document ).ready(function() {
+    $('.submit').click(function(){
+      newMessage($('.user-text').val());
+      $(".bot").append("<p class='userMessage'>"+ $('.user-text').val() +"</p>");
+    })
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+  });
+</script>
+
+<div id="ChatBot_container">
+    <!--HEAD-->
+    <div class="card-header msg_head" >
+        <div class="d-flex bd-highlight">
+            <!--div class="img_cont"-->
+                <img src="../images/logo.png" class="rounded-circle user_img">
+            <!--/div-->
+            <div class="chat_info">
+                <span >Assistant de localisation</span>
+                <p>Univesité de Bordeaux</p>
+            </div>
+            <div class="video_cam">
+                <span><i class="fas fa-phone"></i></span>
+            </div>
+        </div>
+        <span id="close_menu_btn" onclick="openChat(); closeChat()"><i class="fa fa-times" aria-hidden="true"></i></span>
+  	</div>
+    <!--Chat body-->
+    {% if text %}
+    <div class="card-body chat bot">
+        <div class="d-flex justify-content-start mb-4">
+        <div class="msg_cotainer msg">
+            <p>{{text}}</p>
+        </div>
+        </div>
+    </div>
+    {% endif %}
+    <!--Input area-->
+    {% csrf_token %}
+    <div class="input-group response">
+        <input type="text" class="form-control type_msg msg user-text" placeholder="Entrer votre message..." >
+        <div class="input-group-append">
+            <span class="input-group-text "><i class="fas fa-arrow-right submit"></i></span>
+        </div>
+    </div>
+</div>
+  
+   
+{% endblock %}

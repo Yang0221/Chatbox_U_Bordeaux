@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head%}{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Bot localisation </title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+        /************************* HEADER *************************/
+        #header{
+            width: 350px;
+            height : 50px;
+            background: #009de0;
+        }
+        .card-header{
+            border-radius: 15px 15px 0 0 !important;
+            border-bottom: 0 !important;
+            background: #009de0;
+            background: linear-gradient(to right, #45baed,#16aef0, #009de0);
+        }
+        .msg_head{
+            position: relative;
+        }
+        #close_menu_btn{
+            position: absolute;
+            margin-top: 5px;
+            right: 10px;
+            top: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .user_img{
+            height: 40px;
+            width: 40px;
+            border:1.5px solid #f5f6fa;
+        }
+        .video_cam{
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        .video_cam span{
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .chat_info{
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: 20px;
+        }   
+        .chat_info span{
+            font-size: 15px;
+            color: white;
+        }
+        .chat_info p{
+            font-size: 12px;
+            color : white;
+            /*color: rgba(255,255,255,0.6);*/
+        }
+
+        /************************* BODY *************************/
+
+        .userMessage {
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: -20px;
+            border-radius: 25px;
+            background-color: #443a31;
+            color:white;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .bot{
+            font-size: 12px;
+        }
+        .chat{
+            width: 350px;
+            height : 450px;
+            background: #F9F7F7;
+            overflow-y: auto;
+            background: white;
+        }
+        .msg_card_body{
+            overflow-y: auto;
+        }
+        .msg_cotainer{
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: 10px;
+            border-left-style:  solid;
+            border-color: cornflowerblue;
+            color: black;
+            padding: 10px;
+            position: relative;
+        }
+
+        .msg_cotainer_send{
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: -20px;
+            border-radius: 25px;
+            background-color: #443a31;
+            color:white;
+            padding: 10px;
+        }
+        .msg{
+            font-size: 12px;
+        }
+        /************************* GENERAL *************************/
+        #ChatBot_container{
+            width: 350px;
+            height : 700px;
+            margin: auto;
+            font: 5px;
+            display: block;
+        }
+
+        /************************* Footer *************************/
+        .send_btn{
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+</style>
+</head>
+<body>
+{% block body%}
+{% endblock body%}
+</body>
+</html>
