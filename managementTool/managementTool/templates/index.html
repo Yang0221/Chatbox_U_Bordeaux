@@ -4,60 +4,135 @@
     <div class="content">
         <div class="add component">
             <button type="button" class="btn btn-info" onclick="popup()">Ajouter</button>
-            <a href="/exportCSV" class="btn btn-outline-info file" ><i class="far fa-file"></i></a>
+            <a href="/exportCSV" class="btn btn-outline-info file" ><i class="fas fa-file-csv"></i></a>
         </div>
 
         <div class="title">
             <h1>Gestion de l'assistant de localisation</h1>
         </div>
 
-        <div class="search component">
+        <!-- <div class="search component">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-search"></i></span>
                 </div>
             </div>
+        </div> -->
+
+        <div class="component buttons">
+          <button type="button" class="btn btn-info button-campus" onclick="displayTable('campus')">Campus</button>
+          <button type="button" class="btn btn-outline-info button-building" onclick="displayTable('building')">Bâtiments</button>
+          <button type="button" class="btn btn-info button-room" onclick="displayTable('room')">Salles</button>
         </div>
 
         <div class="display component">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Activité principale</th>
-                        <th scope="col">Nombre de salles</th>
-                        <th scope="col"> Modification / Suppresion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {% for b in buildings %}
+          <!-- Campus -->
+          <table class="table campus hide">
+              <thead>
                   <tr>
-                      <th scope="row">1</th>
-                      <td>{{b.name}}</td>
-                      <td>{{b.main_activity}}</td>
-                      <td>26</td>
-                      <td>
-                          <a href="{% url 'edit' b.id %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
-                          <button type="button" class="btn btn-danger" onclick="delete_item({{b.id}})"><i class="far fa-trash-alt"></i></button>
-                      </td>
+                      <th scope="col">#</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Nombre de bâtiments</th>
+                      <th scope="col">Modification / Suppresion</th>
                   </tr>
-                  {% endfor %}
-                </tbody>
-            </table>
+              </thead>
+              <tbody>
+                {% for c in campus %}
+                <tr class="{{b.id}}">
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{c.name}}</td>
+                    <td>{{c.number}}</td>
+                    <td>
+                        <a href="#" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" onclick="delete_item('campus',{{c.id}})"><i class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+          <!-- Building -->
+          <table class="table building show">
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Activité principale</th>
+                      <th scope="col">Nombre de salles</th>
+                      <th scope="col">Modification / Suppresion</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for b in buildings %}
+                <tr class="{{b.id}}">
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{b.name}}</td>
+                    <td>{{b.main_activity}}</td>
+                    <td>{{b.number}}</td>
+                    <td>
+                        <a href="{% url 'edit_building' b.id %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" onclick="delete_item({{b.id}})"><i class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+          <!-- Rooms -->
+          <table class="table room hide">
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Activité</th>
+                      <th scope="col">Étage</th>
+                      <th scope="col"> Modification / Suppresion</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for r in rooms %}
+                <tr class="{{c.id}}">
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{r.name}}</td>
+                    <td>{{r.activity}}</td>
+                    <td>{{r.stage}}</td>
+                    <td>
+                        <a href="#" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" onclick="delete_item({{r.id}})"><i class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+
         </div>
     </div>
     <div class="popup hide-popup">
         <a href="#" class="close-button" onclick="popup()"><i class="fas fa-times"></i></a>
-        <input type="file">
-        <!-- <div class="input-group mb-3 ">
-            <div class="custom-file ">
-                <input type="file" class="custom-file-input" id="inputGroupFile02">
-                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Sélectionner un fichier</label>
-            </div>
-        </div> -->
-        <button type="button" class="btn btn-info"><i class="fas fa-plus"></i></button>
+
+        <div>
+          <div>
+            <input type="radio" id="campus" name="type" value="campus">
+            <label for="campus">Campus</label>
+          </div>
+          <div>
+            <input type="radio" id="building" name="type" value="building" checked>
+            <label for="building">Bâtiment</label>
+          </div>
+          <div>
+            <input type="radio" id="room" name="type" value="room">
+            <label for="room">Salle</label>
+          </div>
+        </div>
+
+        <div>
+          <input id="name" type="text" name="new_name">
+          <label for="name">Nom</label>
+        </div>
+        {% csrf_token %}
+        <button type="button" class="btn btn-info" onclick="add_item()"><i class="fas fa-plus"></i></button>
     </div>
 
 {% endblock %}
