@@ -6,17 +6,15 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from django.http import Http404, HttpResponse
 
 #mettre les clés dans des variables
-assistant_id = "27d22841-06bc-46ed-9343-9c840acf00f0"
+assistant_id = "37560d5c-c606-499e-b779-599ff5bc30a2"
 api_key = 'EvR0NbioVwRGtvL1qZlFJlcXuGPH9_YCzyeAES2AIb8k'
-#assistant_id = "f7a3b52e-4d7e-412e-9143-b0ea96776d46"
-#api_key = 'eXD4siVcZGXJMYtddtfMkmzaaIZe2vcrbbya9BRC4kdR'
+
 
 authenticator = IAMAuthenticator(api_key)
 assistant = AssistantV2(
     version='2019-02-28',
     authenticator=authenticator)
 assistant.set_service_url('https://api.eu-de.assistant.watson.cloud.ibm.com')
-#assistant.set_service_url('https://gateway-fra.watsonplatform.net/assistant/api')
 
 #création d'une session
 session = assistant.create_session(assistant_id).get_result()
