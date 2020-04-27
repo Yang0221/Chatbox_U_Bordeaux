@@ -1,29 +1,14 @@
-function delete_item(id) {
-    if (confirm("Êtes-vous sûr de vouloir supprimer ce bâtiment ? (l'action est irréversible !)")) {
-        $.ajax({
-        type : "POST",
-        url : "/deleteBuilding",
-        dataType: 'json',
-        data : { 'id' : id},
-        success : function(data){
-            $('.' + id).remove();
-        }
-      })
+function edit_alias(path) {
+    alias = $('input[name=edit_alias]').val()
+    $.ajax({
+    type : "POST",
+    url : path,
+    dataType: 'json',
+    data : { 'edit_alias' : alias},
+    success : function(data){
+      console.log(data);
     }
-}
-
-function add_item(){
-  type = $('input[name=type]:checked').val();
-  new_name = $('input[name=new_name]').val();
-  $.ajax({
-  type : "POST",
-  url : "addItem",
-  dataType: 'json',
-  data : {
-    'type' : type,
-    'new_name' : new_name
-    },
-  })
+    })
 }
 
 function popup() {
@@ -47,27 +32,6 @@ function displayTable(type){
   $('.buttons button').addClass('btn-info');
   $('.buttons .button-' + type).addClass('btn-outline-info');
   $('.buttons .button-' + type).removeClass('btn-info');
-
-  // $.ajax({
-  // type : "POST",
-  // url : "/displayTable",
-  // dataType: 'json',
-  // success : function(data){
-  //   campus = JSON.parse(data.campus);
-  //   buildings = JSON.parse(data.buildings);
-  //   room = JSON.parse(data.rooms);
-  //   console.log(campus.length);
-  //   // for (var i = 0; i < 2; i++) {
-  //   //   console.log(campus[i].pk);
-  //   //   console.log(campus[i].fields);
-  //   // }
-  //
-  //
-  //   }
-  // })
-
-
-
 }
 
 //fonctions pour gérer les cookies

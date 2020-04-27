@@ -10,24 +10,26 @@ import csv
 from django.http import HttpResponse
 from django.utils import timezone
 import json
-from django.core import serializers
 
-
-def displayInformations():
-    buildings = Building.objects.all();
-    for b in buildings :
-        b.number = Room.objects.filter(id_building = b.id).count()
-
-    campus =  Campus.objects.all();
-    for c in campus :
-        c.number = Building.objects.filter(id_campus = c.id).count()
-
-    rooms = Room.objects.all();
-    return {'buildings' : buildings, 'campus' : campus, 'rooms' : rooms}
 
 
 def index(request):
-    return render(request , 'index.html', displayInformations())
+    hide = ""
+    campus =  Campus.objects.all();
+    if campus.count() > 0 :
+        hide = "building"
+        for c in campus :
+            c.number = Building.objects.filter(id_campus = c.id).count()
+
+    buildings = Building.objects.all();
+    if buildings.count() > 0 :
+        hide = "room"
+        for b in buildings :
+            b.number = Room.objects.filter(id_building = b.id).count()
+
+    rooms = Room.objects.all();
+
+    return render(request , 'index.html', {'buildings' : buildings, 'campus' : campus, 'rooms' : rooms, 'hide' : hide})
 
 def edit_building(request,id):
     building = Building.objects.get(id = id)
@@ -139,7 +141,6 @@ def add_building_campus(request,id):
     return HttpResponseRedirect("/edit/campus/" + id)
 
 
-
 def delete_alias_campus(request,id,alias):
     SynonymCampus.objects.get(id = alias).delete()
     return HttpResponseRedirect("/edit/campus/" + id)
@@ -188,45 +189,53 @@ def exportCSV(request):
 
     return response
 
-def deleteBuilding(request):
-    if request.POST and request.is_ajax:
-        return HttpResponse(json.dumps("ok"), content_type="application/json")
+def delete_campus(request,id, parent = 0):
+    Campus.objects.get(id = id).delete()
+    return HttpResponseRedirect("/edit/campus/" + str(parent))
+
+def delete_building(request,id, parent = 0):
+    Building.objects.get(id = id).delete()
+    return HttpResponseRedirect("/edit/campus/" + str(parent))
+
 
 def delete_room(request,id, parent = 0):
     Room.objects.get(id = id).delete()
-    if parent != 0 :
-        return HttpResponseRedirect("/edit/building/" + parent)
-    HttpResponse(request.path_info)
+    return HttpResponseRedirect("/edit/building/" + str(parent))
 
 def addItem(request):
     if request.POST and request.is_ajax:
         if request.POST.get('type') == 'building':
-            new_item = Building(name = request.POST.get('new_name'))
+            campus = Campus.objects.all()
+            new_item = Building(name = request.POST.get('new_name'), id_campus = campus[0])
             new_item.save()
-            return HttpResponseRedirect("/edit/building/" + new_item.id)
+            return HttpResponseRedirect("edit/building/" + str(new_item.id))
         elif request.POST.get('type') == 'campus':
             new_item = Campus(name = request.POST.get('new_name'))
             new_item.save()
-            return HttpResponseRedirect("/edit/campus/" + new_item.id)
+            return HttpResponseRedirect("edit/campus/" + str(new_item.id))
         if request.POST.get('type') == 'room':
-            new_item = Room(name = request.POST.get('new_name'))
+            building = Building.objects.all()
+            new_item = Room(name = request.POST.get('new_name'), id_building = building[0])
             new_item.save()
-            return HttpResponseRedirect("/edit/room/" + new_item.id)
+            return HttpResponseRedirect("edit/room/" + str(new_item.id))
 
-# def displayTable(request):
-#     informations = displayInformations()
-#     buildings = informations['buildings']
-#     campus = informations['campus']
-#     rooms = informations['rooms']
-#     data = {
-#         'campus' : serializers.serialize('json', campus),
-#         'buildings' : serializers.serialize('json', buildings),
-#         'rooms' : serializers.serialize('json', rooms)
-#     }
-#
-#     return HttpResponse(json.dumps(data), content_type='application/json')
+def edit_alias_campus(request, id, alias):
+    if request.POST.get('edit_alias') != "":
+        synonyms = SynonymCampus.objects.get(id = alias)
+        synonym.value = request.POST.get('edit_alias')
+        synonym.save()
+        return HttpResponse(json.dumps("ok"), content_type='application/json')
 
+def edit_alias_building(request, id, alias):
+    if request.POST.get('edit_alias') != "":
+        synonyms = SynonymBuilding.objects.get(id = alias)
+        synonym.value = request.POST.get('edit_alias')
+        synonym.save()
+        return HttpResponse(json.dumps("ok"), content_type='application/json')
 
-
-def error(request):
-    return index(request)
+def edit_alias_room(request, id, alias):
+    if request.POST.get('edit_alias') != "":
+        synonyms = SynonymRoom.objects.get(id = alias)
+        synonym.value = request.POST.get('edit_alias')
+        synonym.save()
+        return HttpResponse(json.dumps("ok"), content_type='application/json')

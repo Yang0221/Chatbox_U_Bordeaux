@@ -130,8 +130,8 @@
               <div class="edit-list">
                 {% for s in synonyms %}
                   <div class="edit-list-line">
-                      <input type="text" value="{{s.value}}">
-                      <a href="{%if type == 'building' %}/edit/building/{{building.id}}/edit_synonym{% elif type == 'campus' %}/edit/campus/{{campus.id}}/edit_synonym{% elif type == 'room' %}/edit/room/{{room.id}}/edit_synonym{% endif %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                      <input type="text" value="{{s.value}}" name='edit_alias'>
+                      <a onclick="edit_alias('{%if type == 'building' %}/edit/building/{{building.id}}/edit_synonym/{{s.id}}{% elif type == 'campus' %}/edit/campus/{{campus.id}}/edit_synonym/{{s.id}}{% elif type == 'room' %}/edit/room/{{room.id}}/edit_synonym/{{s.id}}{% endif %}')" href="#" class="btn btn-warning"><i class="fas fa-tools"></i></a>
                       <a href="{%if type == 'building' %}/edit/building/{{building.id}}/delete_synonym/{{s.id}}{% elif type == 'campus' %}/edit/campus/{{campus.id}}/delete_synonym/{{s.id}}{% elif type == 'room' %}/edit/room/{{room.id}}/delete_synonym/{{s.id}}{% endif %}" class="btn btn-danger" onclick=""><i class="far fa-trash-alt"></i></a>
                   </div>
                 {% endfor %}

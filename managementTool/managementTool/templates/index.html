@@ -6,7 +6,6 @@
             <button type="button" class="btn btn-info" onclick="popup()">Ajouter</button>
             <a href="/exportCSV" class="btn btn-outline-info file" ><i class="fas fa-file-csv"></i></a>
         </div>
-
         <div class="title">
             <h1>Gestion de l'assistant de localisation</h1>
         </div>
@@ -46,7 +45,7 @@
                     <td>
                         <a href="{% url 'edit_campus' c.id %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger" onclick="delete_item('campus',{{c.id}})"><i class="far fa-trash-alt"></i></button>
+                        <a href="/edit/campus/{{c.id}}/delete" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -73,7 +72,7 @@
                     <td>
                         <a href="{% url 'edit_building' b.id %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger" onclick="delete_item({{b.id}})"><i class="far fa-trash-alt"></i></button>
+                        <a href="/edit/building/{{b.id}}/delete" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -111,28 +110,30 @@
     </div>
     <div class="popup hide-popup">
         <a href="#" class="close-button" onclick="popup()"><i class="fas fa-times"></i></a>
-
-        <div>
-          <div>
-            <input type="radio" id="campus" name="type" value="campus">
-            <label for="campus">Campus</label>
-          </div>
-          <div>
-            <input type="radio" id="building" name="type" value="building" checked>
-            <label for="building">Bâtiment</label>
-          </div>
-          <div>
-            <input type="radio" id="room" name="type" value="room">
-            <label for="room">Salle</label>
-          </div>
-        </div>
-
-        <div>
-          <input id="name" type="text" name="new_name">
-          <label for="name">Nom</label>
-        </div>
-        {% csrf_token %}
-        <button type="button" class="btn btn-info" onclick="add_item()"><i class="fas fa-plus"></i></button>
+        <form action="addItem" method="POST">
+          {% csrf_token %}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="type" id="campus" value="campus" checked>
+              <label class="form-check-label" for="campus">Campus</label>
+            </div>
+            {% if hide == "room" or hide == "building" %}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="type" id="building" value="building" checked>
+              <label class="form-check-label" for="building">Bâtiment</label>
+            </div>
+            {% if hide == "room" %}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="type" id="room" value="room" checked>
+              <label class="form-check-label" for="room">Salle</label>
+            </div>
+            {% endif %}
+            {% endif %}
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input id="name" type="text" name="new_name">
+            </div>
+            <button type="submit" class="btn btn-info">Ajouter</button>
+        </form>
     </div>
 
 {% endblock %}
