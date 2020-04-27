@@ -101,6 +101,7 @@
 /**********************************     EDIT     ********************************************/
 .edit-background {
     background-color: #efefef;
+    min-height: 100vh;
 }
 
 .edit-body {

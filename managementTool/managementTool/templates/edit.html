@@ -4,43 +4,74 @@
 <div class="edit-background">
   <div class="edit-title">
       <div class="">
-        {%if building %} <i class="fas fa-building"></i> {% elif room %} <i class="fas fa-door-closed"></i> {% elif campus %} <i class="fas fa-city"></i> {% endif %}
-
-        <h1>{{building.name}}</h1>
+        {%if type == 'building' %} <i class="fas fa-building"></i> {% elif type == 'room' %} <i class="fas fa-door-closed"></i> {% elif type == 'campus' %} <i class="fas fa-city"></i> {% endif %}
+        <h1>{%if type == 'building' %} {{building.name}} {% elif type == 'room' %} {{room.name}} {% elif type == 'campus' %} {{campus.name}} {% endif %}</h1>
       </div>
       <a href="{% url 'index' %}" class="btn btn-info">Retour</a>
   </div>
   <div class="edit-body">
       <div class="edit-component edit-left-box">
           <div class="edit-box edit-building-informations">
-              <form action="{{building.id}}/edit_informations" method="POST">
+              <form action="{%if type == 'building' %}{{building.id}}{% elif type == 'room' %}{{room.id}}{% elif type == 'campus' %}{{campus.id}}{% endif %}/edit_informations" method="POST">
                 {% csrf_token %}
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="name">Nom</label>
-                          <input type="text" class="form-control" name="name" value="{{building.name}}">
+                          <input type="text" class="form-control" name="name" value="{%if type == 'building' %}{{building.name}}{% elif type == 'room' %}{{room.name}}{% elif type == 'campus' %}{{campus.name}}{% endif %}" pattern="[a-zA-Z0-9-']{1,250}">
                       </div>
                       <div class="form-group col-md-6">
-                          <label for="mainActivity">Activité principale</label>
-                          <input type="text" class="form-control" name="mainActivity" value="{{building.main_activity}}">
+                          {%if type == 'building' or type == 'campus'%}
+                            <label for="address">Adresse</label>
+                            <input type="text" class="form-control" name="address" value="{%if type == 'building' %}{{building.address}}{% elif type == 'campus' %}{{campus.address}}{% endif %}" pattern="[a-zA-Z0-9-']{1,250}">
+                          {% elif type == 'room' %}
+                            <label for="stage">Étage</label>
+                            <input type="number" class="form-control" name="stage" pattern="[0-9]+" value="{{room.floor}}" id="stage">
+                          {% endif %}
+
                       </div>
                   </div>
                   <div class="form-row">
+                      {%if type == 'building' or type == 'room' %}
                       <div class="form-group col-md-6">
-                          <label for="address">Adresse</label>
-                          <input type="text" class="form-control" name="address" value="{{building.address}}">
+                          <label for="mainActivity">{%if type == 'building' %}Activité principale{% elif type == 'room' %}Activité{% endif %}</label>
+                          <input type="text" class="form-control" name="mainActivity" value="{%if type == 'building' %}{{building.main_activity}}{% elif type == 'room' %}{{room.activity}}{% endif %}" pattern="[a-zA-Z0-9-']{1,250}">
                       </div>
-                      <div class="form-group col-md-6">
-                          <label for="coordinatesGPS">Coordonnées GPS</label>
-                          <input type="text" class="form-control" name="coordinatesGPS" value="{{building.coordinates}}">
-                      </div>
+                      {% endif %}
+                      {%if type == 'building' or type == 'campus'%}
+                        <div class="form-group col-md-6">
+                            <label for="coordinatesGPS">Coordonnées GPS</label>
+                            <input type="text" class="form-control" name="coordinatesGPS" value="{%if type == 'building' %}{{building.coordinates}}{% elif type == 'campus' %}{{campus.coordinates}}{% endif %}" pattern="[0-9]{4}/[0-9]{4}">
+                        </div>
+                      {% elif type == 'room' %}
+                        <div class="form-group col-md-6">
+                          <label for="buildingList">Bâtiment</label>
+                          <select class="form-control" name="building_id">
+                            {% for b in buildings%}
+                              <option value="{{b.id}}" {{b.selected}} >{{b.name}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      {% endif %}
                   </div>
+
+                  {%if type == 'building' %}
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Campus</label>
+                        <select class="form-control" name="campus_id">
+                          {% for c in campus%}
+                            <option value="{{c.id}}" {{c.selected}} >{{c.name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                  {% endif %}
                   <button type="submit" class="btn btn-info">Modifier</button>
               </form>
           </div>
 
           <div class="edit-box edit-alias-add">
-              <form action="{{building.id}}/add_synonym" method="POST">
+              <form action="{%if type == 'building' %}{{building.id}}{% elif type == 'room' %}{{room.id}}{% elif type == 'campus' %}{{campus.id}}{% endif %}/add_synonym" method="POST">
                 {% csrf_token %}
                   <div class="form-row">
                       <div class="form-group col-md-6">
@@ -52,31 +83,43 @@
               </form>
           </div>
 
+          {%if type == 'building' or type == 'campus'%}
           <div class="edit-box edit-room-add">
-
-              <h5 class="edit-room-add-title">Nouvelle salle</h5>
-              <form action="{{building.id}}/add_room" method="POST">
+              <h5 class="edit-room-add-title">{%if type == 'building' %}Nouvelle salle{% elif type == 'campus' %}Nouveau bâtiment{% endif %}</h5>
+              <form action="{%if type == 'building' %}{{building.id}}/add_room{% elif type == 'campus' %}{{campus.id}}/add_building{% endif %}" method="POST">
                 {% csrf_token %}
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="roomName">Nom</label>
-                          <input type="text" class="form-control" name="roomName">
+                          <input type="text" class="form-control" name="{%if type == 'building' %}roomName{% elif type == 'campus' %}buildingName{% endif %}" pattern="[a-zA-Z0-9-']{1,250}">
                       </div>
                       <div class="form-group col-md-6">
+                          {%if type == 'building' %}
                           <label for="stage">Étage</label>
-                          <input type="number" class="form-control" name="stage">
+                          <input type="number" class="form-control" name="roomStage" pattern="[0-9]+">
+                          {% elif type == 'campus' %}
+                          <label for="address">Adresse</label>
+                          <input type="text" class="form-control" name="roomAddress" value="{{building.name}}" pattern="[a-zA-Z0-9-']{1,250}">
+                          {% endif %}
                       </div>
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                           <label for="activity">Activité</label>
-                          <input type="text" class="form-control" name="activity">
+                          <input type="text" class="form-control" name="activity" pattern="[a-zA-Z0-9-']{1,250}">
                       </div>
+                      {% if type == 'campus' %}
+                      <div class="form-group col-md-6">
+                          <label for="coordinatesGPS">Coordonnées GPS</label>
+                          <input type="text" class="form-control" name="coordinatesGPS" value="{{building.coordinates}}" pattern="[0-9]{4}/[0-9]{4}">
+                      </div>
+                      {% endif %}
 
                   </div>
                   <button type="submit" class="btn btn-info">Ajouter</button>
               </form>
           </div>
+          {% endif %}
       </div>
 
       <div class="edit-component edit-right-box">
@@ -88,26 +131,40 @@
                 {% for s in synonyms %}
                   <div class="edit-list-line">
                       <input type="text" value="{{s.value}}">
-                      <button type="button" class="btn btn-warning"><i class="fas fa-tools"></i></button>
-                      <button type="button" class="btn btn-danger" onclick=""><i class="far fa-trash-alt"></i></button>
+                      <a href="{%if type == 'building' %}/edit/building/{{building.id}}/edit_synonym{% elif type == 'campus' %}/edit/campus/{{campus.id}}/edit_synonym{% elif type == 'room' %}/edit/room/{{room.id}}/edit_synonym{% endif %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                      <a href="{%if type == 'building' %}/edit/building/{{building.id}}/delete_synonym/{{s.id}}{% elif type == 'campus' %}/edit/campus/{{campus.id}}/delete_synonym/{{s.id}}{% elif type == 'room' %}/edit/room/{{room.id}}/delete_synonym/{{s.id}}{% endif %}" class="btn btn-danger" onclick=""><i class="far fa-trash-alt"></i></a>
                   </div>
                 {% endfor %}
               </div>
           </div>
+
+          {%if type == 'building' or type == 'campus'%}
           <div class="edit-box">
               <div class="edit-list-title">
-                  <h3>Salles</h3>
+                  <h3>{%if type == 'building' %}Salles{% elif type == 'campus' %}Bâtiments{% endif %}</h3>
               </div>
               <div class="edit-list">
-                {% for r in rooms %}
-                  <div class="edit-list-line">
-                      <input type="text" value="{{r.name}}">
-                      <button type="button" class="btn btn-warning"><i class="fas fa-tools"></i></button>
-                      <button type="button" class="btn btn-danger" onclick=""><i class="far fa-trash-alt"></i></button>
-                  </div>
-                {% endfor %}
+                {%if type == 'building' %}
+                  {% for r in rooms %}
+                    <div class="edit-list-line">
+                        <input type="text" value="{{r.name}}">
+                        <a href="/edit/room/{{r.id}}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                        <a href="/edit/building/{{building.id}}/delete/{{r.id}}" class="btn btn-danger" onclick=""><i class="far fa-trash-alt"></i></a>
+                    </div>
+                  {% endfor %}
+                {% elif type == 'campus' %}
+                  {% for b in buildings %}
+                    <div class="edit-list-line">
+                        <input type="text" value="{{b.name}}">
+                        <a href="/edit/building/{{b.id}}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                        <a href="/edit/campus/{{campus.id}}/delete/{{b.id}}" class="btn btn-danger" onclick=""><i class="far fa-trash-alt"></i></a>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+
               </div>
           </div>
+          {% endif %}
       </div>
   </div>
 </div>

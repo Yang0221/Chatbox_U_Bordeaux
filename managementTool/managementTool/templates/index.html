@@ -39,12 +39,12 @@
               </thead>
               <tbody>
                 {% for c in campus %}
-                <tr class="{{b.id}}">
+                <tr class="{{c.id}}">
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{c.name}}</td>
                     <td>{{c.number}}</td>
                     <td>
-                        <a href="#" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                        <a href="{% url 'edit_campus' c.id %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger" onclick="delete_item('campus',{{c.id}})"><i class="far fa-trash-alt"></i></button>
                     </td>
@@ -92,15 +92,15 @@
               </thead>
               <tbody>
                 {% for r in rooms %}
-                <tr class="{{c.id}}">
+                <tr class="{{r.id}}">
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{r.name}}</td>
                     <td>{{r.activity}}</td>
                     <td>{{r.stage}}</td>
                     <td>
-                        <a href="#" class="btn btn-warning"><i class="fas fa-tools"></i></a>
+                        <a href="{% url 'edit_room' r.id %}" class="btn btn-warning"><i class="fas fa-tools"></i></a>
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger" onclick="delete_item({{r.id}})"><i class="far fa-trash-alt"></i></button>
+                        <a href="/edit/room/{{r.id}}/delete" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
