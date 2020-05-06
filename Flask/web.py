@@ -13,7 +13,7 @@ connect()
 
 @app.route("/", methods = ['GET'])
 def start():
-    return render_template('botMoodleUB.html')
+    return render_template('index.html')
 
 
 @app.route("/update", methods = ['POST'])
@@ -28,4 +28,4 @@ def update():
     return ret
 
 if __name__ == "__main__":
-    app.run(host="localhost")
+    app.run(host="127.0.0.1")
