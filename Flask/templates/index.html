@@ -1,125 +1,99 @@
-{% extends 'layout.html' %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
 
-{% block body %}
-<script type="text/javascript">
+<head>
 
-  function optionMessage(object){
-    console.log(object);
-    $('.user-btn').attr('disabled','true');
-    $(".bot").append("<p class='userMessage'>"+  object.firstChild.data  +"</p>");
-    newMessage(object.value);
-  }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Bot localisation </title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script src="{{ url_for('static', filename='script.js')}}">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
 
-  function newMessage(text){
-      $.ajax({
-        type : "POST",
-        url : "/new_message",
-        dataType: 'json',
-        data : { 'text' : text},
-        success : function(data){
-          if(data.text){
-              $(".bot").append("<p>"+ data.text +"</p>");
-          }
-          if(data.title){
-            $(".bot").append("<p>"+ data.title +"</p>");
-            for (let i = 0; i < 5; i++) {
-              //$(".bot").append('<button type="button" onclick="optionMessage(this)" class="btn btn-lg btn-primary user-btn" value="' + data.options[i].value.input.text + '">'+ data.options[i].label +'</button>');
-              $(".bot").append('<div class="choix_menu msg" ><ul><li><button onclick="optionMessage(this)" value="' + data.options[i].value.input.text + '">'+ data.options[i].label +'</button></li></ul></div>');
-            }
-          }
-        }
-      })
-  }
-    
-  //fonctions pour gérer les cookies
-  function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-  }
-  var csrftoken = getCookie('csrftoken');
-
-  function csrfSafeMethod(method) {
-      //these HTTP methods do not require CSRF protection
-      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-  }
-
-  /*Input*/
-  $( document ).ready(function() {
-    $('.submit').click(function(){
-      newMessage($('.user-text').val());
-      $(".bot").append("<p class='userMessage'>"+ $('.user-text').val() +"</p>");
-    })
-
-    $.ajaxSetup({
-        beforeSend: function(xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        }
-    });
-  });
-</script>
-
-<div id="ChatBot_container">
-    <!--HEAD-->
-    <div class="card-header msg_head" >
-        <div class="d-flex bd-highlight">
-            <!--div class="img_cont"-->
-            {% for i in images %}
-            <img src="{% static 'images/' %}{{i}}"lass="rounded-circle user_img">
-            {% endfor %}
-                <!--img src="{% static 'images/' %}{{logo.png}}" class="rounded-circle user_img"-->
-            <!--/div-->
-            <div class="chat_info">
-                <span >Assistant de localisation</span>
-                <p>Univesité de Bordeaux</p>
+<body>
+    <div id="ChatBot_container">
+        <div class="card-header msg_head">
+            <div class="d-flex bd-highlight">
+                <img src="{{ url_for('static', filename='logo.png')}}" lass="rounded-circle user_img">
+                <div class="chat_info">
+                    <span>Assistant de localisation</span>
+                    <p>Université de Bordeaux</p>
+                </div>
+                <div class="video_cam">
+                    <span><i class="fas fa-phone"></i></span>
+                </div>
             </div>
-            <div class="video_cam">
-                <span><i class="fas fa-phone"></i></span>
+            <span id="close_menu_btn" onclick="openChat(); closeChat()"><i class="fa fa-times" aria-hidden="true"></i></span>
+        </div>
+        <div class="card-body chat bot">
+            <div class="d-flex justify-content-start mb-4">
+                <div class="msg_cotainer msg">
+                    <p>
+                    </p>
+                </div>
             </div>
         </div>
-        <span id="close_menu_btn" onclick="openChat(); closeChat()"><i class="fa fa-times" aria-hidden="true"></i></span>
-  	</div>
-    <!--Chat body-->
-    {% if text %}
-    <div class="card-body chat bot">
-        <div class="d-flex justify-content-start mb-4">
-        <div class="msg_cotainer msg">
-            <p>{{text}}</p>
-        </div>
+
+        <div class="input-group response">
+            <input type="text" class="form-control type_msg msg user-text" placeholder="Entrer votre message..." onkeypress="verifEnter(event)">
+            <div class="input-group-append">
+                <span class="input-group-text "><i class="fas fa-arrow-right submit"></i></span>
+            </div>
         </div>
     </div>
-    {% endif %}
-    {% if option %}
-    <div class="d-flex justify-content-start mb-4">
-        <div class="choix_menu msg" >
-            <ul>
-                <li><button >{{text}}</button></li>
-            </ul>
-        </div>   
-    </div>
-    {% endif %}
-    <!--Input area-->
-    {% csrf_token %}
-    <div class="input-group response">
-        <input type="text" class="form-control type_msg msg user-text" placeholder="Entrer votre message..." >
-        <div class="input-group-append">
-            <span class="input-group-text "><i class="fas fa-arrow-right submit"></i></span>
-        </div>
-    </div>
-</div>
-  
-   
-{% endblock %}
+    <script>
+        function verifEnter(event) {
+            var x = event.which || event.keyCode;
+            if (x == 13) {
+                LoadTextResponse();
+            }
+        }
+
+        function LoadTextResponse() {
+            var input_usr = document.getElementsByClassName("form-control type_msg msg user-text")[0].value;
+            document.getElementsByClassName("form-control type_msg msg user-text")[0].value = "";
+            LoadBotResponse(input_usr);
+        }
+
+        function addText(id, text) {
+            var new_para = document.createElement("p");
+            var new_text = document.createTextNode(text);
+            new_para.appendChild(new_text);
+            var element = document.getElementsByClassName(id)[0];
+            element.appendChild(new_para);
+        }
+
+        function LoadBotResponse(input_usr) {
+            addText("msg_cotainer msg", input_usr);
+            console.log("User input : ")
+            console.log(input_usr);
+            $.ajax({
+                type: "POST",
+                url: "/update",
+                dataType: 'json',
+                data: {
+                    'text': input_usr
+                },
+                success: function(data) {
+                    if (data.text) {
+                        $(".bot").append("<p>" + data.text + "</p>");
+                    }
+                    if (data.title) {
+                        $(".bot").append("<p>" + data.title + "</p>");
+                        for (let i = 0; i < 5; i++) {
+                            //$(".bot").append('<button type="button" onclick="optionMessage(this)" class="btn btn-lg btn-primary user-btn" value="' + data.options[i].value.input.text + '">'+ data.options[i].label +'</button>');
+                            $(".bot").append('<div class="choix_menu msg" ><ul><li><button onclick="optionMessage(this)" value="' + data.options[i].value.input.text + '">' + data.options[i].label + '</button></li></ul></div>');
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

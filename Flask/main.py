@@ -32,7 +32,7 @@ def bot_message(input_msg):
     message = assistant.message(
         clef2,
         session_id,
-        input={'text' : input_msg},          ## de la forme "input = {'text' : 'msg'}"
+        input = input_msg,         ## de la forme "input = {'text' : 'msg'}"
         context={
             'metadata': {
                 'deployment': 'myDeployment'
