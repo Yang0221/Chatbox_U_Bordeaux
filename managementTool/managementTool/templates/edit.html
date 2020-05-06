@@ -40,7 +40,7 @@
                       {%if type == 'building' or type == 'campus'%}
                         <div class="form-group col-md-6">
                             <label for="coordinatesGPS">Coordonnées GPS</label>
-                            <input type="text" class="form-control" name="coordinatesGPS" value="{%if type == 'building' %}{{building.coordinates}}{% elif type == 'campus' %}{{campus.coordinates}}{% endif %}" pattern="[0-9]{4}/[0-9]{4}">
+                            <input type="text" class="form-control" name="coordinatesGPS" value="{%if type == 'building' %}{{building.coordinates}}{% elif type == 'campus' %}{{campus.coordinates}}{% endif %}" pattern="[-]{0,1}[0-9]{1,2}.[0-9]{5}/[-]{0,1}[0-9]{1,2}.[0-9]{5}">
                         </div>
                       {% elif type == 'room' %}
                         <div class="form-group col-md-6">
@@ -111,7 +111,7 @@
                       {% if type == 'campus' %}
                       <div class="form-group col-md-6">
                           <label for="coordinatesGPS">Coordonnées GPS</label>
-                          <input type="text" class="form-control" name="coordinatesGPS" value="{{building.coordinates}}" pattern="[0-9]{4}/[0-9]{4}">
+                          <input type="text" class="form-control" name="coordinatesGPS" value="{{building.coordinates}}" pattern="[-][0-9]{1,2}.[0-9]{5}/[-][0-9]{1,2}.[0-9]{5}">
                       </div>
                       {% endif %}
 
