@@ -32,14 +32,13 @@ def bot_message(input_msg):
     message = assistant.message(
         clef2,
         session_id,
-        input = input_msg,         ## de la forme "input = {'text' : 'msg'}"
-        context={
-            'metadata': {
-                'deployment': 'myDeployment'
-            }
-    }).get_result()
+        input = {
+            'message_type' : 'text',
+            'text' : input_msg, 
+            'options' : {"return_context" : True}}
+        ).get_result()
     #print()
     #print(message["output"]["generic"]) ## Liste de réponse (type et options)
     #print()
-    #print(json.dumps(message, indent=2))
-    return message["output"]["generic"]
+    print(json.dumps(message, indent=2))
+    return message

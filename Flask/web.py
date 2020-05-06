@@ -20,9 +20,12 @@ def start():
 def update():
     print(request.form)
     list_ret = bot_message(request.form["msg"])
-    print(list_ret)
-    print(json.dumps(list_ret))
-    ret = make_response(json.dumps(list_ret), 200)
+    print(list_ret["output"]["generic"])
+    print(list_ret["context"]["skills"]["main skill"]["user_defined"])
+    infos = {"msg" : list_ret["output"]["generic"],
+             "context" : list_ret["context"]["skills"]["main skill"]["user_defined"] }
+    print(json.dumps(infos))
+    ret = make_response(json.dumps(infos), 200)
     ret.status_code = 200
     ret.headers['Access-Control-Allow-Origin'] = '*'
     return ret
