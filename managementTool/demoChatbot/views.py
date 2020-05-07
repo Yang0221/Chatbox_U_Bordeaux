@@ -11,6 +11,8 @@ from localisation.models import SynonymBuilding
 from localisation.models import SynonymRoom
 from localisation.models import SynonymCampus
 
+context_bool = False
+
 #mettre les clés dans des variables
 assistant_id = "37560d5c-c606-499e-b779-599ff5bc30a2"
 api_key = 'EvR0NbioVwRGtvL1qZlFJlcXuGPH9_YCzyeAES2AIb8k'
@@ -27,6 +29,20 @@ session = assistant.create_session(assistant_id).get_result()
 
 def new_message(request):
     if request.is_ajax and request.POST:
+        context = {}
+        if context_bool == True:
+            context_bool == False
+            context = {
+                'skills' : {
+                    'main skill' : {
+                        'user_defined' : {
+                            'objective' : 'N/A'
+                        }
+                    }
+                }
+            }
+
+
         #récupération du message
         message = assistant.message(
             assistant_id,
@@ -34,7 +50,9 @@ def new_message(request):
             input = {
                 'message_type' : 'text',
                 'text' : request.POST.get('text'),
-                'options' : {"return_context" : True}}
+                'options' : {"return_context" : True}
+            },
+            context = context
             ).get_result()
 
         address = ""
@@ -42,8 +60,8 @@ def new_message(request):
         long = 0.0
 
         if message['context']['skills']['main skill']['user_defined']['objective'] != 'N/A' :
+            context_bool == True
             item = message["context"]["skills"]["main skill"]["user_defined"]['objective']
-            print(item)
             object = None
             try:
                 object = Campus.objects.get(name = item)
@@ -69,7 +87,7 @@ def new_message(request):
                                     object = Building.objects.get(id = object.id_building)
                                 except SynonymRoom.DoesNotExist:
                                     objet = None
-            print(object)
+
             if object != None:
                 address = object.address
                 tmp = object.coordinates.split("/")
