@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'localisation.apps.LocalisationConfig',
+    'demoChatbot.apps.DemochatbotConfig',
 ]
 
 MIDDLEWARE = [

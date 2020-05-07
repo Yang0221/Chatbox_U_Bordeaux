@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -34,5 +34,6 @@ urlpatterns = [
     path('addItem' , views.addItem , name = 'addItem'),
     path('exportCSV' , views.exportCSV , name = 'exportCSV'),
     path('' , views.index , name = 'index'),
+    path('demo/' , include('demoChatbot.urls')),
     path('admin/', admin.site.urls)
 ]
