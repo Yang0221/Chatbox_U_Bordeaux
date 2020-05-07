@@ -11,6 +11,9 @@ function newMessage(text){
       dataType: 'json',
       data : { 'text' : text},
       success : function(data){
+        console.log("adress : " + data.address);
+        console.log("lat : " + data.lat);
+        console.log("long : " + data.long);
         if(data.text){
             $(".bot").append("<p>"+ data.text +"</p>");
         }
@@ -53,6 +56,13 @@ $( document ).ready(function() {
   $('.submit').click(function(){
     newMessage($('.user-text').val());
     $(".bot").append("<p class='userMessage'>"+ $('.user-text').val() +"</p>");
+  })
+
+  $(document).keypress(function(event) {;
+    if (event.keyCode == 13) {
+      newMessage($('.user-text').val());
+      $(".bot").append("<p class='userMessage'>"+ $('.user-text').val() +"</p>");
+    }
   })
 
   $.ajaxSetup({
