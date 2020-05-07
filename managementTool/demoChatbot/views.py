@@ -43,6 +43,7 @@ def new_message(request):
 
         if message['context']['skills']['main skill']['user_defined']['objective'] != 'N/A' :
             item = message["context"]["skills"]["main skill"]["user_defined"]['objective']
+            print(item)
             object = None
             try:
                 object = Campus.objects.get(name = item)
@@ -62,9 +63,13 @@ def new_message(request):
                                 object = Room.objects.get(name = item)
                                 object = Building.objects.get(id = object.id_building)
                             except Room.DoesNotExist:
-                                object = SynonymRoom.objects.get(value = item).id_room
-                                object = Room.objects.get(id = object)
-                                object = Building.objects.get(id = object.id_building)
+                                try:
+                                    object = SynonymRoom.objects.get(value = item).id_room
+                                    object = Room.objects.get(id = object)
+                                    object = Building.objects.get(id = object.id_building)
+                                except SynonymRoom.DoesNotExist:
+                                    objet = None
+            print(object)
             if object != None:
                 address = object.address
                 tmp = object.coordinates.split("/")

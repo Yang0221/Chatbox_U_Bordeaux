@@ -41,7 +41,7 @@
             margin-top: auto;
             margin-bottom: auto;
             margin-left: 20px;
-        }   
+        }
         .chat_info span{
             font-size: 15px;
             color: white;
@@ -133,4 +133,11 @@
         .send_btn{
             font-size: 30px;
             cursor: pointer;
+        }
+
+        /************************* Footer *************************/
+        .map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+            width: 25vw;
+            height: 25vh;
+            background: red;
         }
