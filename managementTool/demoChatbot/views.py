@@ -37,9 +37,10 @@ def new_message(request):
                 'options' : {"return_context" : True}}
             ).get_result()
 
-        adress = ""
+        address = ""
         lat = 0.0
         long = 0.0
+
         if message['context']['skills']['main skill']['user_defined']['objective'] != 'N/A' :
             item = message["context"]["skills"]["main skill"]["user_defined"]['objective']
             object = None
