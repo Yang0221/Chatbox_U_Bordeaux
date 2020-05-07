@@ -1,0 +1,2010 @@
+{
+  "intents": [
+    {
+      "intent": "oui_je_suis_tudiant",
+      "examples": [
+        {
+          "text": "Oui, je suis étudiant."
+        }
+      ],
+      "description": "\"Je suis perdu et je suis étudiant\""
+    },
+    {
+      "intent": "je_ne_sais_pas_o_je_dois_me_rendre",
+      "examples": [
+        {
+          "text": "Je ne sais pas ce que je cherche."
+        }
+      ],
+      "description": "\"Je ne sais pas où je dois aller\""
+    },
+    {
+      "intent": "aller_a_endroit",
+      "examples": [
+        {
+          "text": "Où se trouve le @campus ?"
+        },
+        {
+          "text": "Je veux aller dans @salle."
+        },
+        {
+          "text": "Je veux aller au @batiment."
+        },
+        {
+          "text": "Où est le @batiment ?"
+        },
+        {
+          "text": "Où puis-je trouver le @batiment ?"
+        },
+        {
+          "text": "Je cherche le @batiment."
+        },
+        {
+          "text": "Je cherche le @campus."
+        },
+        {
+          "text": "Je souhaite aller sur le @campus."
+        },
+        {
+          "text": "Où se trouve le @batiment ?"
+        },
+        {
+          "text": "Où puis-je trouver le @campus ?"
+        },
+        {
+          "text": "Où est le @campus ?"
+        },
+        {
+          "text": "Indique-moi l'adresse de la @salle."
+        },
+        {
+          "text": "Indique moi l'adresse du @batiment."
+        },
+        {
+          "text": "Je veux aller au @campus."
+        },
+        {
+          "text": "Je voudrais aller au @batiment."
+        },
+        {
+          "text": "Je voudrais aller dans @salle."
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "je_souhaite_un_itineraire",
+      "examples": [
+        {
+          "text": "Oui, je souhaite un itinéraire."
+        }
+      ],
+      "description": "\"je souhaite un itinéraire\""
+    },
+    {
+      "intent": "je_souhaite_me_rendre_dans_un_batiment",
+      "examples": [
+        {
+          "text": "Je suis perdu et je cherche un bâtiment."
+        }
+      ],
+      "description": "\"Je suis perdu et je cherche un bâtiment.\""
+    },
+    {
+      "intent": "je_suis_perdu",
+      "examples": [
+        {
+          "text": "Je ne sais pas où je dois me rendre."
+        },
+        {
+          "text": "Je suis perdu."
+        }
+      ],
+      "description": "\"Perdu\""
+    },
+    {
+      "intent": "je_souhaite_me_rendre_sur_un_campus",
+      "examples": [
+        {
+          "text": "Je suis perdu et je cherche un campus de l'université de bordeaux."
+        }
+      ],
+      "description": "\"Je suis perdu et je recherche un Campus\""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "test",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "batiment",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "A1",
+          "synonyms": [
+            "Unité de formation de Physique",
+            "UF Physique"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A2",
+          "synonyms": [
+            "UF Sciences de l'ingénieur",
+            "TP de Physique"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A3",
+          "synonyms": [
+            "UF Physique"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A4",
+          "synonyms": [
+            "Recherche physique"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A5",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "A8",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "A9",
+          "synonyms": [
+            "UF de Chimie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A10",
+          "synonyms": [
+            "UF de Chimie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A11",
+          "synonyms": [
+            "Génie Civil et Environnemental",
+            "Institut de mécanique et d'ingénierie",
+            "I2M GCE",
+            "Tutorat Santé",
+            "UE2B"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A12",
+          "synonyms": [
+            "ISM",
+            "Institut des Sciences moléculaires",
+            "Recherche chimie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A13",
+          "synonyms": [
+            "Château Castelterrefort"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A21",
+          "synonyms": [
+            "Foyer étudiant du Collège Sciences et Technologies",
+            "Service culturel du collège Sciences et technologies",
+            "Département Langues, lettres et communication",
+            "DLLC"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A22",
+          "synonyms": [
+            "Département Licence Sciences et Technologies"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A28",
+          "synonyms": [
+            "CREMI"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Q",
+          "synonyms": [
+            "Faculté d'Ethnologie",
+            "Faculté d'Anthropologie sociale"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "P",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Hall 2",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Hall 1",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "N",
+          "synonyms": [
+            "Scolarité"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "O",
+          "synonyms": [
+            "Collège Science de l'Homme",
+            "Faculté sciences de l'éducation",
+            "BU Science de l'Homme",
+            "Bibliothèque Universitaire Science de l'Homme"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "M",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "L",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "K",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "J",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "I",
+          "synonyms": [
+            "Centre E- DURKHEIH",
+            "Faculté de Sociologie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "H",
+          "synonyms": [
+            "Faculté de Psychologie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "G",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "E",
+          "synonyms": [
+            "Musée d'Ethnologie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "D",
+          "synonyms": [
+            "Visio-conférence"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "C",
+          "synonyms": [
+            "Pôle universitaire de Sciences de gestion"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B",
+          "synonyms": [
+            "Service Formation continue Universitaire"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Laboratoire de Neuropsycho-pharmacologie de l'addiction",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bâtiment AD",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bâtiment ED",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Centre Broca",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bât TB",
+          "synonyms": [
+            "Laboratoires"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "BU",
+          "synonyms": [
+            "Bibliothèque Universitaire des Sciences du vivant et de la santé"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Espace Santé",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "IBIO",
+          "synonyms": [
+            "Institut de Bio-imagerie en sciences médicales"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Pharmacie 2",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Pharmacie 1",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bâtiment P",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bâtiment N",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bâtiment O",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "4A",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "3B",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "3A",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "2B",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "2A",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "1B",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "1A",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "RMSB",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "M2",
+          "synonyms": [
+            "Stadium de Monadey",
+            "Halle de sports"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "M1",
+          "synonyms": [
+            "Piscine universitaire"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "M3",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "B22",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "B20",
+          "synonyms": [
+            "BU Sciences et techniques",
+            "Bibliothèque Universitaire Sciences et Techniques"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B18",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "B16",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "B13",
+          "synonyms": [
+            "Institut Européen de Chimie et de Biologie",
+            "IECB"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B8",
+          "synonyms": [
+            "Recherche Biologie Cellulaire et moléculaire biophysique"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B7",
+          "synonyms": [
+            "TP Biologie",
+            "TD Biologie",
+            "Enseignement biologie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B6",
+          "synonyms": [
+            "Foyer étudiant"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B5B",
+          "synonyms": [
+            "Petit Amphi de Biologie Animale",
+            "UF Biologie",
+            "Amphithéâtre biologie animale",
+            "Amphithéâtre PABA",
+            "Amphi PABA"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B5A",
+          "synonyms": [
+            "Grand amphi de Biologie Animale",
+            "UF Biologie",
+            "Amphithéâtre biologie animale",
+            "Amphitéâtre GABA",
+            "Amphi Gaba"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B4",
+          "synonyms": [
+            "TD Biologie",
+            "TP Biologie",
+            "Enseignement Biologie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "B2",
+          "synonyms": [
+            "Recherche Biologie et Physiologie animale"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "C5",
+          "synonyms": [
+            "Centre Prévost"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "C4",
+          "synonyms": [
+            "Salle Agora"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A40",
+          "synonyms": [
+            "Maison Elise"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A38",
+          "synonyms": [
+            "Annexe Bonnefont"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A37",
+          "synonyms": [
+            "DRI",
+            "Direction des relations internationales",
+            "Service universitaire d'action sociale",
+            "SUAS"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A36",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "A33",
+          "synonyms": [
+            "IMB",
+            "Institut de Mathématiques de Bordeaux",
+            "IMB Maths Info"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A32",
+          "synonyms": [
+            "Maison pour la science",
+            "PILPSE"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A31",
+          "synonyms": [
+            "Integration from Material to Systems",
+            "Laboratoire de l'Intégration du Matériau au Système",
+            "IMS"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "A29",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "A30",
+          "synonyms": [
+            "Laboratoire Bordelais de recherche en informatique",
+            "LaBri",
+            "Unité de Formation d'Informatique",
+            "UF Informatique"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "salle",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre Alfred WEGENER",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 114",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 112",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 111",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 110",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 108",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 107",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 105",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 104",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 103",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 102",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 101",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre Thomas EDISON",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre Charles DARWIN",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre Henri POINCARE",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre Rosalind FRANKLIN",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Infirmerie",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Service des sports",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Bureau de la vie étudiante",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Département licence",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Sécrétariat pédagogique",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Guichet unique",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Scolarité",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre IAE",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre Pitres",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre Gintrac",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre FABRE",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Relais Handicap",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Imprimerie",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle Auriac",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre SIGALAS",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre DENIGES",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre DURKHEIH",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 16",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 09",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 06",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 05",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 04",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 03",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 7",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 6",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 5",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 4",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 3",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 2",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 1",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 106",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle A2",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle A1",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle CAPES",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "004",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "003",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "001-002",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "107",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "106",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "105",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "104",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "103",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "102",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "101",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "001",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre G",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre F",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre E",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphithéâtre D",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre C",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre B",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Amphitéâtre A",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "9",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "8",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "5",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "4",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "3",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "2",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "457",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "455",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "406",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "405",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "404",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "403",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "402",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "401",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "311",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "309",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "308",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "307",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "306",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "305",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "304",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "303",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "302",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "301",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "255",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "253",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "251",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "165",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "162",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "161",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "160",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "158",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "156",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "155",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "154",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "153",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "152",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "151",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "150",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "A113",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "A109",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 205",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 204",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 203",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 202",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 201",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 119",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 117",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Salle 115",
+          "synonyms": []
+        }
+      ]
+    },
+    {
+      "entity": "college",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "College Sciences de l'Homme",
+          "synonyms": [
+            "college science de l'homme"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "College Sciences et Technologies",
+          "synonyms": [
+            "college science et technologie"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Collège sciences de la santé",
+          "synonyms": [
+            "college sciences de la santé"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Collège droit science politique économie gestion",
+          "synonyms": [
+            "college droit et sciences politique économie gestion"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "lieu",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "salle",
+          "synonyms": [
+            "testsalle"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "campus",
+          "synonyms": [
+            "testcampus"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "batiment1",
+          "synonyms": [
+            "testbatiment"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "campus",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Campus Montaigne-Montesquieu",
+          "synonyms": [
+            "campus montaigne-montesquieu"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Campus Peixotto",
+          "synonyms": [
+            "campus peixotto"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Campus Bordes",
+          "synonyms": [
+            "campus bordes"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Campus Victoire",
+          "synonyms": [
+            "campus victoire"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Campus Bastide",
+          "synonyms": [
+            "campus bastide"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Campus Carreire",
+          "synonyms": [
+            "campus carreire"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Campus Talence Peixotto",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Campus Pessac François Bordes",
+          "synonyms": [
+            "Collège Science du vivant"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Je ne sais pas quel campus je recherche",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_3_1587743956364",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1587744001246"
+      },
+      "dialog_node": "node_6_1587747008534",
+      "previous_sibling": "node_2_1587746448483"
+    },
+    {
+      "type": "standard",
+      "title": "Je recherche ce campus",
+      "parent": "node_3_1587743956364",
+      "context": {
+        "objective": "<?entities.campus[0].value?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587742532000"
+      },
+      "conditions": "@campus",
+      "dialog_node": "node_2_1587746448483"
+    },
+    {
+      "type": "standard",
+      "title": "Je suis vraiment perdu",
+      "output": {
+        "generic": [
+          {
+            "title": "Etes-vous etudiant à l'Université de Bordeaux?",
+            "options": [
+              {
+                "label": "Oui",
+                "value": {
+                  "input": {
+                    "text": "Oui, je suis étudiant."
+                  }
+                }
+              },
+              {
+                "label": "Non",
+                "value": {
+                  "input": {
+                    "text": "Non je ne suis pas étudiant."
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_8_1587743638857",
+      "conditions": "#je_ne_sais_pas_o_je_dois_me_rendre",
+      "dialog_node": "node_4_1587744001246",
+      "previous_sibling": "node_3_1587743956364"
+    },
+    {
+      "type": "standard",
+      "title": "Je suis perdu et je recherche un bâtiment",
+      "parent": "node_8_1587743638857",
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "anything_else",
+      "dialog_node": "node_5_1587747306115",
+      "previous_sibling": "node_4_1587744001246"
+    },
+    {
+      "type": "standard",
+      "title": "Je suis perdu et je recherche un campus",
+      "output": {
+        "generic": [
+          {
+            "title": "Quel Campus recherchez-vous ?",
+            "options": [
+              {
+                "label": "Campus Peixotto",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Peixotto"
+                  }
+                }
+              },
+              {
+                "label": "Campus Bordes",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Bordes"
+                  }
+                }
+              },
+              {
+                "label": "Campus Montaigne-Montesquieu",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Montaigne-Montesquieu"
+                  }
+                }
+              },
+              {
+                "label": "Campus de Carreire",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus de Carreire"
+                  }
+                }
+              },
+              {
+                "label": "Campus Victoire",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Victoire"
+                  }
+                }
+              },
+              {
+                "label": "Campus Bastide",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Bastide"
+                  }
+                }
+              },
+              {
+                "label": "Je ne sais pas",
+                "value": {
+                  "input": {
+                    "text": "Je ne sais pas quel campus je recherche"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_8_1587743638857",
+      "conditions": "#je_souhaite_me_rendre_sur_un_campus",
+      "dialog_node": "node_3_1587743956364"
+    },
+    {
+      "type": "standard",
+      "title": "Je ne sais pas quel campus je recherche",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_1_1587821609281",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1587744001246"
+      },
+      "dialog_node": "node_3_1587821609289",
+      "previous_sibling": "node_2_1587821609289"
+    },
+    {
+      "type": "standard",
+      "title": "Je recherche ce campus",
+      "output": {},
+      "parent": "node_1_1587821609281",
+      "context": {
+        "objective": "Guichet Unique <?entities.campus[0].value?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587742532000"
+      },
+      "conditions": "@campus",
+      "dialog_node": "node_2_1587821609289"
+    },
+    {
+      "type": "standard",
+      "title": "Position du lieu",
+      "output": {
+        "generic": [
+          {
+            "title": "Sur quel campus ce trouve ce lieu ?",
+            "options": [
+              {
+                "label": "Campus Peixotto",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Peixotto"
+                  }
+                }
+              },
+              {
+                "label": "Campus Bordes",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Bordes"
+                  }
+                }
+              },
+              {
+                "label": "Campus Montaigne-Montesquieu",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Montaigne-Montesquieu"
+                  }
+                }
+              },
+              {
+                "label": "Campus de Carreire",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus de Carreire"
+                  }
+                }
+              },
+              {
+                "label": "Campus Victoire",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Victoire"
+                  }
+                }
+              },
+              {
+                "label": "Campus Bastide",
+                "value": {
+                  "input": {
+                    "text": "Je recherche le Campus Bastide"
+                  }
+                }
+              },
+              {
+                "label": "Je ne sais pas",
+                "value": {
+                  "input": {
+                    "text": "Je ne sais pas quel campus je recherche"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_5_1587747306115",
+      "conditions": "true",
+      "dialog_node": "node_1_1587821609281"
+    },
+    {
+      "type": "standard",
+      "title": "Je fais partie du collège ",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Allez vous renseigner auprès du guichet unique de votre collège."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1587744297174",
+      "context": {
+        "objective": "Guichet Unique <?entities.college[0].value?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587742532000"
+      },
+      "conditions": "@college",
+      "dialog_node": "node_4_1587744804585"
+    },
+    {
+      "type": "standard",
+      "title": "Non je ne suis pas étudiant",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Essayez de vous adresser aux personnes autour de vous, d'entrer dans un bâtiment de l'Université de Bordeaux pour poser des questions."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1587744001246",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587743121752"
+      },
+      "conditions": "anything_else",
+      "dialog_node": "node_5_1587745953079",
+      "previous_sibling": "node_3_1587744297174"
+    },
+    {
+      "type": "standard",
+      "title": "Je suis perdu et étudiant",
+      "output": {
+        "generic": [
+          {
+            "title": "De quel collège faites-vous partie",
+            "options": [
+              {
+                "label": "Collège Sciences et Technologies",
+                "value": {
+                  "input": {
+                    "text": "Je fais partie du Collège sciences et technologies"
+                  }
+                }
+              },
+              {
+                "label": "Collège Sciences de la Santé",
+                "value": {
+                  "input": {
+                    "text": "Je fais parti du collège sciences de la santé"
+                  }
+                }
+              },
+              {
+                "label": "Collège droit science politique économie gestion",
+                "value": {
+                  "input": {
+                    "text": "Je fais parti du collège droit science politique économie gestion"
+                  }
+                }
+              },
+              {
+                "label": "Collège sciences de l’Homme",
+                "value": {
+                  "input": {
+                    "text": "Je fais parti du collège sciences de l’Homme"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_4_1587744001246",
+      "conditions": "#oui_je_suis_tudiant",
+      "dialog_node": "node_3_1587744297174"
+    },
+    {
+      "type": "standard",
+      "title": "Itinéraire refusé",
+      "parent": "node_9_1587742532000",
+      "context": {
+        "iti": false
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587743121752"
+      },
+      "conditions": "anything_else",
+      "dialog_node": "node_9_1587742809286",
+      "previous_sibling": "node_8_1587742716361"
+    },
+    {
+      "type": "standard",
+      "title": "Itinéraire demandé",
+      "parent": "node_9_1587742532000",
+      "context": {
+        "iti": true
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587743121752"
+      },
+      "conditions": "#je_souhaite_un_itineraire",
+      "dialog_node": "node_8_1587742716361"
+    },
+    {
+      "type": "standard",
+      "title": "Je suis perdu",
+      "output": {
+        "generic": [
+          {
+            "title": "Quel lieu recherchez-vous ?",
+            "options": [
+              {
+                "label": "Campus",
+                "value": {
+                  "input": {
+                    "text": "Je suis perdu et je cherche un campus de l'université de bordeaux."
+                  }
+                }
+              },
+              {
+                "label": "Bâtiment",
+                "value": {
+                  "input": {
+                    "text": "Je suis perdu et je cherche un bâtiment."
+                  }
+                }
+              },
+              {
+                "label": "Salle",
+                "value": {
+                  "input": {
+                    "text": "Je suis perdu et je recherche une salle."
+                  }
+                }
+              },
+              {
+                "label": "Je ne sais pas",
+                "value": {
+                  "input": {
+                    "text": "Je ne sais pas ce que je cherche."
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#je_suis_perdu",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_8_1587743638857",
+      "previous_sibling": "node_9_1587743121752"
+    },
+    {
+      "type": "standard",
+      "title": "Aller à endroit (salle)",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "objective": "<?entities.salle[0].value?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587742532000"
+      },
+      "conditions": "#aller_a_endroit && @salle",
+      "dialog_node": "node_2_1588782974114",
+      "previous_sibling": "node_1_1588782936806"
+    },
+    {
+      "type": "standard",
+      "title": "Tout le reste",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Je n'ai pas compris. Vous pouvez essayer de reformuler."
+              },
+              {
+                "text": "Pouvez-vous dire cela autrement ? Je ne comprends pas."
+              },
+              {
+                "text": "Je n'ai pas compris ce que vous voulez dire."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Tout le reste",
+      "previous_sibling": "node_2_1588782974114",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Aller à endroit (bat)",
+      "context": {
+        "objective": "<?entities.batiment[0].value?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587742532000"
+      },
+      "conditions": "#aller_a_endroit && @batiment",
+      "dialog_node": "node_4_1587743308225",
+      "previous_sibling": "node_8_1587743638857"
+    },
+    {
+      "type": "standard",
+      "title": "GPS",
+      "output": {
+        "generic": [
+          {
+            "title": "Souhaitez-vous un itinéraire vers $objective ? (nécessite les données de navigations)",
+            "options": [
+              {
+                "label": "Oui",
+                "value": {
+                  "input": {
+                    "text": "Oui, je souhaite un itinéraire."
+                  }
+                }
+              },
+              {
+                "label": "Non",
+                "value": {
+                  "input": {
+                    "text": "Non je ne souhaite pas d'itinéraire."
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "false",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_9_1587742532000",
+      "previous_sibling": "Tout le reste"
+    },
+    {
+      "type": "standard",
+      "title": "Autre chose ?",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Avez-vous besoin d'autre chose ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "digress_in": "does_not_return",
+      "dialog_node": "node_9_1587743121752",
+      "previous_sibling": "Bienvenue"
+    },
+    {
+      "type": "standard",
+      "title": "Aller à endroit (campus)",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "objective": "<?entities.campus[0].value?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1587742532000"
+      },
+      "conditions": "#aller_a_endroit && @campus",
+      "dialog_node": "node_1_1588782936806",
+      "previous_sibling": "node_4_1587743308225"
+    },
+    {
+      "type": "standard",
+      "title": "Bienvenue",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Bonjour, comment que recherchez-vous ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "iti": false,
+        "objective": "N/A",
+        "sub-objective": "N/O"
+      },
+      "conditions": "welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "Bienvenue"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Vouliez-vous dire:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Aucune de précédent"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Vouliez-vous dire:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Recherche endroit",
+  "language": "fr",
+  "description": ""
+}
