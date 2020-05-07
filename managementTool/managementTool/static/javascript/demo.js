@@ -21,7 +21,7 @@ function newMessage(text){
           $(".bot").append('<div class="d-flex justify-content-start mb-4"><div class="msg_cotainer"><span class="msg">'+ data.title +'</span></div></div>');
           for (let i = 0; i < data['options'].length; i++) {
             //$(".bot").append('<button type="button" onclick="optionMessage(this)" class="btn btn-lg btn-primary user-btn" value="' + data.options[i].value.input.text + '">'+ data.options[i].label +'</button>');
-                          $(".bot").append('<div class="d-flex justify-content-start mb-4"><div class="choix_menu msg " ><ul><li><button onclick="optionMessage(this)" value="' + data.options[i].value.input.text + '">'+ data.options[i].label +'</button></li></ul></div></div>');
+                          $(".bot").append('<div class="d-flex justify-content-start"><div class="choix_menu msg "><ul><li><button class="user-btn" onclick="optionMessage(this)" value="' + data.options[i].value.input.text + '">'+ data.options[i].label +'</button></li></ul></div></div>');
           }
         }
       }
